@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Alumni Registration</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Register Student</h1>
+
+        <form>
+            <label for="fullName">Full Name</label>
+            <input name="fullName" type="text" />
+
+            <label for="email">Email</label>
+            <input name="email" type="text" />
+
+            <label for="grade">Grade</label>
+            <input name="grade" type="text" />
+
+            <input name="submit" type="button" value="Submit" />
+        </form>
+
+        <div>
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Grade</th>
+                </thead>
+                <tbody>
+                    <tr v-for="student in students"> <!-- v-for="" is the vue.js directive to be used to populate table dynamically -->
+                        <td>{{student.name}}</td>
+                        <td>{{student.email}}</td>
+                        <td>{{student.grade}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: { // "data" object to work with data in vue.js
+                students: [ // hard coded data array
+                    { name: "Claudio", email: "claudio@gmail.com", grade: 9.5 },
+                    { name: "Richard", email: "richard@hotmail.com", grade: 10 },
+                    { name: "Harry", email: "harry@hogwarts.com", grade: 7 },
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>
