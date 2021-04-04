@@ -9,33 +9,33 @@
 
 <body>
     <div id="app">
-        <h1>Register Student</h1>
+        <h1>Registrar Aluno</h1>
 
         <form>
-            <label for="fullName">Full Name</label>
-            <input name="fullName" type="text" />
+            <label for="fullnome">Nome Completo</label>
+            <input nome="fullnome" type="text" v-model="form.nome"/>
 
             <label for="email">Email</label>
-            <input name="email" type="text" />
+            <input nome="email" type="text" v-model="form.email" />
 
-            <label for="grade">Grade</label>
-            <input name="grade" type="text" />
+            <label for="nota">Nota</label>
+            <input nome="nota" type="text" v-model="form.nota" />
 
-            <input name="submit" type="button" value="Submit" />
+            <input nome="submit" type="button" value="Cadastrar" @click="adicionarContato" />
         </form>
 
         <div>
             <table class="table">
                 <thead>
-                    <th>Name</th>
+                    <th>Nome</th>
                     <th>Email</th>
-                    <th>Grade</th>
+                    <th>Nota</th>
                 </thead>
                 <tbody>
-                    <tr v-for="student in students"> <!-- v-for="" is the vue.js directive to be used to populate table dynamically -->
-                        <td>{{student.name}}</td>
-                        <td>{{student.email}}</td>
-                        <td>{{student.grade}}</td>
+                    <tr v-for="aluno in alunos"> <!-- v-for="" is the vue.js directive to be used to populate table dynamically -->
+                        <td>{{aluno.nome}}</td>
+                        <td>{{aluno.email}}</td>
+                        <td>{{aluno.nota}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -45,12 +45,26 @@
     <script>
         var app = new Vue({
             el: "#app",
+
             data: { // "data" object to work with data in vue.js
-                students: [ // hard coded data array
-                    { name: "Claudio", email: "claudio@gmail.com", grade: 9.5 },
-                    { name: "Richard", email: "richard@hotmail.com", grade: 10 },
-                    { name: "Harry", email: "harry@hogwarts.com", grade: 7 },
-                ]
+                form: {
+                    nome: '',
+                    email: '',
+                    nota: ''
+                },
+                alunos: []
+            },
+
+            methods: {
+                limpaFormulario: function() {
+                    this.form = {nome: '', email: '', nota: ''} // 'this' allows to have access to vue.js objects (form, alunos, methods etc)
+                },
+                adicionarContato: function() {
+                    console.log(this.form)
+                    this.alunos.push(this.form) 
+                    this.limpaFormulario()
+                }
+
             }
         });
     </script>
