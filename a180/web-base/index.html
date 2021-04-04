@@ -25,7 +25,7 @@
         </form>
 
         <div>
-            <table>
+            <table class="table">
                 <thead>
                     <th>Name</th>
                     <th>Email</th>
@@ -54,6 +54,31 @@
             }
         });
     </script>
+    
+    <style>
+        .table{
+            margin-top: 20px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .table th, .table td {
+            border-top: 1px solid #ccc;
+        }
+
+        input {
+            display: block;
+        }
+
+        input[type=button] {
+            margin-top: 10px;
+            background-color: #3F51B5; /* http://materialuicolors.co/ */
+            border-color: #3F51B5;
+            color: #fff;
+        }
+    </style>
+
+
 </body>
 
 </html>
